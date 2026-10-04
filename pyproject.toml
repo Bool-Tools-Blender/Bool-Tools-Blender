@@ -1,0 +1,13 @@
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+
+[tool.ruff.format]
+line-ending = "lf"
+quote-style = "double"
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+
+[tool.ruff.lint]
+ignore = ["E741", "RUF012", "PLW1510"]

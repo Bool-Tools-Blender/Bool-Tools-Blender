@@ -1,0 +1,212 @@
+Tools in CAD Sketcher are either exposed as a workspacetool or as an operator. Note however
+that either of those use the same [interaction system](interaction_system.md).
+
+
+## Generic Tools
+::: CAD_Sketcher.operators.add_sketch.View3D_OT_slvs_add_sketch
+
+::: CAD_Sketcher.operators.delete_entity.View3D_OT_slvs_delete_entity
+
+::: CAD_Sketcher.operators.delete_constraint.View3D_OT_slvs_delete_constraint
+
+
+## Workspacetools
+![!Workspacetools](images/workspacetools.png){style="height:160px; width:60px; object-fit:cover;" align=right}
+
+Workspacetools are used to interactively create entities. You can access them from
+the viewport's "T"-panel. Check the [tools section](tools.md) to get familiar with
+the behavior of CAD Sketcher tools.
+
+> **INFO:** Interaction with extension geometry is only possible when one of the
+extension tools is active.
+
+
+### Workspacetool Access Keymap
+Whenever one of the extension's tools is active the tool access keymap allows to quickly switch between the different tools.
+These keys also work while a tool is running: the unfinished element is discarded and the new tool starts.
+While typing a number, letters are read as units (e.g. `5cm`) instead.
+
+|Key|Modifier|Action|
+|:---:|---|---|
+|Esc / Rmb|-   |Activate Tool: Select|
+|P|-   |Invoke Tool: Point|
+|L|-   |Invoke Tool: Line|
+|C|-   |Invoke Tool: Circle|
+|A|-   |Invoke Tool: Endpoint Arc|
+|A|Shift   |Invoke Tool: Center Arc|
+|R|-   |Invoke Tool: Rectangle (the variant the toolbar shows)|
+|Y|-   |Invoke Tool: Trim|
+|B|-   |Invoke Tool: Bevel|
+|O|-   |Invoke Tool: Offset|
+|D|-   |Invoke Tool: Dimension|
+|J|-   |Invoke Tool: Project Geometry|
+
+**Dimensional Constraints:**
+
+These start the Dimension tool limited to one kind of dimension; plain D lets it
+infer the kind from what you pick.
+
+|Key|Modifier|Action|
+|---|---|---|
+|D|Alt   |Distance|
+|V|Alt   |Vertical Distance|
+|H|Alt   |Horizontal Distance|
+|A|Alt   |Angle|
+|O|Alt   |Diameter|
+|R|Alt   |Radius|
+
+**Geometric Constraints:**
+
+|Key|Modifier|Action|
+|---|---|---|
+|C|Shift   |Coincident|
+|V|Shift   |Vertical|
+|H|Shift   |Horizontal|
+|E|Shift   |Equal|
+|P|Shift   |Parallel|
+|L|Shift   |Perpendicular|
+|T|Shift   |Tangent|
+|M|Shift   |Midpoint|
+|R|Shift   |Ratio|
+
+### Editing Keymap
+Available while any of the extension's tools is active.
+
+|Key|Modifier|Action|
+|:---:|---|---|
+|X / Del|-|Delete selected entities|
+|C|Ctrl|Copy|
+|V|Ctrl|Paste|
+|D|Shift|Duplicate & move|
+|G|-|Move|
+|V|-|Align view to the active entity|
+|M|Alt|Merge points|
+|C|Alt+Shift|Toggle construction mode|
+
+### Global Shortcuts
+Available in Object Mode regardless of the active tool, also while a tool is running.
+The object-level tools these start are covered in
+[modeling tools](modeling.md).
+
+|Key|Modifier|Action|
+|:---:|---|---|
+|A|Ctrl+Shift|Add sketch / leave the active sketch|
+|E|Ctrl+Shift|Extrude|
+|R|Ctrl+Shift|Revolve|
+|D|Ctrl+Shift|Array (linear or circular, whichever the toolbar shows)|
+|B|Ctrl+Shift|Boolean|
+|M|Ctrl+Shift|Open the CAD Sketcher pie menu (drawing tools and constraints)|
+|Esc|Shift|Switch to Blender's Select tool|
+
+### Basic Tool Keymap
+The basic tool interaction is consistent between tools.
+
+|Key|Modifier|Action|
+|:---:|---|---|
+|Tab|-|Jump to next tool state or property substate when in numerical edit|
+|0-9 / (-)|-|Activate numeric edit|
+|Enter / Lmb|-|Verify the operation|
+|Lmb (drag)|-|Draw by dragging: press, drag past the Drag Threshold (Preferences > Input), release|
+|Esc / Rmb|-|Cancel the operation|
+|Z|Ctrl|Cancel the operation (like Esc); press again to undo|
+
+**While numeric edit is active**
+
+|Key|Modifier|Action|
+|:---:|---|---|
+|Tab|-|Jump to next tool property substate|
+|0-9|-|Activate numeric edit|
+|Minus(-)|-|Toggle between positive and negative values|
+
+### Selection tools
+::: CAD_Sketcher.operators.select.View3D_OT_slvs_select
+
+::: CAD_Sketcher.operators.select.View3D_OT_slvs_select_all
+
+::: CAD_Sketcher.operators.select.View3D_OT_slvs_select_invert
+
+::: CAD_Sketcher.operators.select.View3D_OT_slvs_select_extend
+
+::: CAD_Sketcher.operators.select.View3D_OT_slvs_select_extend_all
+
+**Keymap:**
+
+|Key|Modifier|Action|
+|---|---|---|
+|LMB (click)|-   |Toggle select|
+|LMB (click)|Shift|Extend selection|
+|LMB (click)|Ctrl|Subtract from selection|
+|LMB (click)|Alt|Select the next entity in the overlapping stack under the cursor|
+|Wheel|Alt|Cycle the hovered entity through overlapping ones without selecting|
+|LMB (drag)|-|Box select, or tweak the hovered entity|
+|LMB (drag)|Shift|Box select (extend)|
+|LMB (drag)|Ctrl|Box select (subtract)|
+|A|Ctrl|Select all|
+|Esc|-   |Deselect all|
+|I|Ctrl |Invert selection|
+|E|Ctrl |Extend selection in chain|
+|E|Ctrl+Shift   |Select full chain|
+|Rmb|-|Open the context menu|
+
+> **INFO:** LMB in empty space will also deselect all.
+
+> **INFO:** Chain selection works with coincident constraints too
+
+> **INFO:** When entities overlap, a plain click grabs the nearest one. Alt+click
+steps to the next entity down (repeat to dig through the stack), and Alt+wheel
+cycles the hovered entity so you can preview before clicking. This also works
+while picking geometry inside a drawing or constraint tool.
+
+::: CAD_Sketcher.operators.add_point_2d.View3D_OT_slvs_add_point2d
+
+::: CAD_Sketcher.operators.add_line_2d.View3D_OT_slvs_add_line2d
+
+::: CAD_Sketcher.operators.add_circle.View3D_OT_slvs_add_circle2d
+
+::: CAD_Sketcher.operators.add_arc.View3D_OT_slvs_add_arc2d
+
+::: CAD_Sketcher.operators.add_arc.View3D_OT_slvs_add_arc3pt2d
+
+::: CAD_Sketcher.operators.add_rectangle.View3D_OT_slvs_add_rectangle
+
+::: CAD_Sketcher.operators.add_rectangle.View3D_OT_slvs_add_rectangle_center
+
+::: CAD_Sketcher.operators.add_rectangle.View3D_OT_slvs_add_rectangle_3point
+
+::: CAD_Sketcher.operators.trim.View3D_OT_slvs_trim
+
+::: CAD_Sketcher.operators.bevel.View3D_OT_slvs_bevel
+
+The radius follows the cursor and is clamped to what still fits between the
+neighbouring segments. Type a value to set it exactly; a typed radius is held by a
+radius dimension on the new arc, which the redo panel can turn off again (or on,
+for a dragged one).
+
+::: CAD_Sketcher.operators.offset.View3D_OT_slvs_add_offset
+
+An offset stays tied to what it came from: each offset line is kept parallel to
+its source, arcs and circles share the source's center, and the segments of a path
+are held at one common distance, so editing the source moves the offset with it.
+Type a value to set that distance exactly; as with the bevel, a typed distance is
+held by a dimension the redo panel can toggle.
+
+::: CAD_Sketcher.operators.add_dimension.VIEW3D_OT_slvs_add_dimension
+
+::: CAD_Sketcher.operators.project_geometry.VIEW3D_OT_slvs_project_geometry
+
+Project Geometry brings a mesh object's edges into the active sketch as native
+construction points and lines. The projected points stay linked to their source
+vertices, so editing or transforming the source object updates the projection.
+
+### Workplane tools
+A workplane is any Blender object whose transform defines the sketch plane (see
+[code documentation](code_docs.md)). These operators manage the workplane an
+active sketch is anchored to.
+
+::: CAD_Sketcher.operators.align_workplane.View3D_OT_slvs_align_workplane_cursor
+
+::: CAD_Sketcher.operators.workplane_anchor.View3D_OT_slvs_make_workplane_free
+
+::: CAD_Sketcher.operators.workplane_anchor.View3D_OT_slvs_reattach_workplane
+
+::: CAD_Sketcher.operators.workplane_anchor.View3D_OT_slvs_change_sketch_workplane
